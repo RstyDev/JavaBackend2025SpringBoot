@@ -22,12 +22,12 @@ public class PedidoController {
 
     @PostMapping("/pedidos")
     public ResponseEntity<PedidoDTO> addPedido(@Valid @RequestBody NewPedidoDTO pedido) {
-        try {
+//        try {
             return ResponseEntity.ok(this.service.save(pedido));
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return ResponseEntity.notFound().build();
-        }
+//        } catch (Exception e) {
+//            System.out.println(e.getMessage());
+//            return ResponseEntity.notFound().build();
+//        }
     }
 
     @GetMapping("/usuario/{usuarioId}/pedidos")

@@ -25,7 +25,7 @@ public class ProductController {
     }
 
     @GetMapping("/productos")
-    public ResponseEntity<ListaProductosDTO> getAll(@RequestParam("name") String name) {
+    public ResponseEntity<ListaProductosDTO> getAll(@RequestParam(name = "name", required = false) String name) {
         if (name != null) {
             List<ProductoDTO> prods = this.service.getByName(name);
             return ResponseEntity.ok().body(new ListaProductosDTO(prods));
@@ -41,21 +41,21 @@ public class ProductController {
 
     @PutMapping("/productos/{id}")
     public ResponseEntity<ProductoDTO> edit(@PathVariable Long id, @RequestBody @Valid ProductoDTO producto) {
-        try {
+//        try {
             return ResponseEntity.ok().body(this.service.update(id,producto));
-        } catch (NotFoundException e) {
-            System.out.println(e.getMessage());
-            return ResponseEntity.notFound().build();
-        }
+//        } catch (NotFoundException e) {
+//            System.out.println(e.getMessage());
+//            return ResponseEntity.notFound().build();
+//        }
     }
 
     @DeleteMapping("/productos/{id}")
     public ResponseEntity<ProductoDTO> delete(@PathVariable Long id) {
-        try {
+//        try {
             return ResponseEntity.ok().body(this.service.delete(id));
-        } catch (NotFoundException e) {
-            System.out.println(e.getMessage());
-            return ResponseEntity.notFound().build();
-        }
+//        } catch (NotFoundException e) {
+//            System.out.println(e.getMessage());
+//            return ResponseEntity.notFound().build();
+//        }
     }
 }
